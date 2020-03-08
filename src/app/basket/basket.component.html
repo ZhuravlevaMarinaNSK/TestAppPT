@@ -1,0 +1,38 @@
+<mat-button-toggle-group (change)="onCurrencyChange($event)" value="USD">
+  <mat-button-toggle value="RUB" aria-label="Ruble">
+    <mat-icon>&#8381;</mat-icon>
+  </mat-button-toggle>
+  <mat-button-toggle value="USD" aria-label="Dollar">
+    <mat-icon>&#36;</mat-icon>
+  </mat-button-toggle>
+  <mat-button-toggle value="EUR" aria-label="Euro">
+    <mat-icon>&euro;</mat-icon>
+  </mat-button-toggle>
+  <mat-button-toggle value="GBP" aria-label="Pound">
+    <mat-icon>&pound;</mat-icon>
+  </mat-button-toggle>
+  <mat-button-toggle value="JPY" aria-label="Yen">
+    <mat-icon>&yen;</mat-icon>
+  </mat-button-toggle>
+</mat-button-toggle-group>
+
+<table mat-table [dataSource]="this.recalcItemPrice()">
+
+  <ng-container matColumnDef="name">
+    <th mat-header-cell *matHeaderCellDef> Item name </th>
+    <td mat-cell *matCellDef="let element"> {{ element.name }} </td>
+    <td mat-footer-cell *matFooterCellDef> <b>Итого:</b> </td>
+  </ng-container>
+
+  <ng-container matColumnDef="price">
+    <th mat-header-cell *matHeaderCellDef> Item price </th>
+    <td mat-cell *matCellDef="let element"> {{ element.price | currency: selectedCurrency }} </td>
+    <td mat-footer-cell *matFooterCellDef> {{ getTotalCost() | currency: selectedCurrency }} </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  <tr mat-footer-row *matFooterRowDef="displayedColumns"></tr>
+</table>
+<ng-container *ngIf="errorMessage">{{ errorMessage }}</ng-container>
+{{ totalCartPrice | json }}

@@ -1,0 +1,36 @@
+/* You can add global styles to this file, and also import other style files */
+nav { 
+  display: flex;
+  justify-content: center;
+  margin: 15px 0; 
+}
+
+.container {
+  width: 360px;
+  padding: 15px;
+  padding-top: 10%;
+  margin: auto;
+}
+
+nav a {
+  padding: 5px 10px;
+  text-decoration: none;
+  margin-right: 10px;
+  margin-top: 10px;
+  margin-bottom: 15px;
+  display: inline-block;
+  background-color: #eee;
+  border-radius: 4px;
+}
+nav a:visited, a:link {
+  color: #607D8B;
+}
+nav a:hover {
+  color: #039be5;
+  background-color: #CFD8DC;
+}
+nav a.active {
+  color: #039be5;
+}
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

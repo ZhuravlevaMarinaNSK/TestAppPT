@@ -1,0 +1,29 @@
+<div class="container">
+  <form class="form" #form="ngForm">
+    <div class="form_field">
+      <input 
+        #login="ngModel"       
+        type="text" 
+        name="login"
+        [(ngModel)]="person.login"
+        placeholder="Введите логин" 
+        required>
+      <ng-container *ngIf="login.invalid && login.errors && login.dirty">
+        <small class="form_error" *ngIf="login.errors.required">Обязательное поле</small>
+      </ng-container>
+    </div>
+    <div class="form_field form_field--password">
+      <input 
+        #password="ngModel" 
+        type="password" 
+        name="password"
+        [(ngModel)]="person.password"
+        placeholder="Введите пароль" 
+        required>
+      <ng-container *ngIf="password.invalid && password.errors && password.dirty">
+        <small class="form_error" *ngIf="password.errors.required">Обязательное поле</small>
+      </ng-container>
+    </div>    
+    <button class="form_field form_field--button" type="submit" (click)="onSubmit()">Войти</button>
+  </form>
+</div>
